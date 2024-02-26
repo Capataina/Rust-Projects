@@ -10,7 +10,9 @@ fn main() {
 
         io::stdin().read_line(&mut action).expect("Failed to read command");
 
-        action = convert_to_lower_case(action.trim().to_string());
+        action = action.trim().to_string();
+
+        convert_to_lower_case(&mut action);
 
         if action == "exit" {
             break; // Exit the loop (and the program)
@@ -28,12 +30,12 @@ fn main() {
     }
 }
 
-fn convert_to_lower_case(word: String) -> String {
+fn convert_to_lower_case(word: &mut String) {
     let mut lower_cased_word = String::new();
 
     for character in word.chars() {
         lower_cased_word.push_str(&character.to_lowercase().collect::<String>());
     }
 
-    return lower_cased_word;
+    *word = lower_cased_word;
 }
