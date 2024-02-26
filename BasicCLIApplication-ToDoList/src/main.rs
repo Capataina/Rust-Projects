@@ -5,12 +5,12 @@ fn main() {
 
     loop {
         let mut action = String::new();
-        
+
         println!("The usable commands are: \n 1 - 'List' to view the to-do list \n 2 - 'Add' to add a new item to the to-do list \n 3 - 'Exit' to exit the application.\n");
 
         io::stdin().read_line(&mut action).expect("Failed to read command");
 
-        action = ConvertToLowerCase(action.trim().to_string());
+        action = convert_to_lower_case(action.trim().to_string());
 
         if action == "exit" {
             break; // Exit the loop (and the program)
@@ -28,12 +28,12 @@ fn main() {
     }
 }
 
-fn ConvertToLowerCase(word: String) -> String {
-    let mut lowerCasedWord = String::new();
+fn convert_to_lower_case(word: String) -> String {
+    let mut lower_cased_word = String::new();
 
     for character in word.chars() {
-        lowerCasedWord.push_str(&character.to_lowercase().collect::<String>());
+        lower_cased_word.push_str(&character.to_lowercase().collect::<String>());
     }
 
-    return lowerCasedWord;
+    return lower_cased_word;
 }
