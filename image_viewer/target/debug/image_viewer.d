@@ -1,0 +1,1 @@
+C:\Rust-Projects\image_viewer\target\debug\image_viewer.exe: C:\Rust-Projects\image_viewer\src\image_loader.rs C:\Rust-Projects\image_viewer\src\main.rs
