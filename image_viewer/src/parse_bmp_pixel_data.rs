@@ -7,7 +7,7 @@ pub struct BMPImage {
     pub bytes_per_pixel: usize,
 }
 
-pub fn parse_bmp_pixel_data(bmp_bytes: Vec<u8>, bmp_metadata: BMPMetadata) -> BMPImage {
+pub fn parse_bmp_pixel_data(bmp_bytes: &Vec<u8>, bmp_metadata: BMPMetadata) -> BMPImage {
     let width: usize = bmp_metadata.width as usize;
     let height: usize = bmp_metadata.height as usize;
     let bits_per_pixel: usize = bmp_metadata.bits_per_pixel as usize;

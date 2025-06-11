@@ -18,7 +18,7 @@ pub struct BMPMetadata {
     pub important_colors: u32,
 }
 
-pub fn parse_bmp_metadata(bmp_bytes: Vec<u8>) -> BMPMetadata {
+pub fn parse_bmp_metadata(bmp_bytes: &Vec<u8>) -> BMPMetadata {
     let signature: [u8; 2] = bmp_bytes[0..2].try_into().unwrap();
     assert_eq!(signature, [66, 77], "Invalid BMP file signature");
 
