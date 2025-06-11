@@ -13,9 +13,7 @@ use crate::parse_bmp_metadata::BMPMetadata;
 use crate::parse_bmp_pixel_data::{parse_bmp_pixel_data, BMPImage};
 use crate::render_ascii_image::render_ascii_image;
 use image_loader::{image_loader, ImageStruct};
-use log::debug;
 use parse_bmp_metadata::parse_bmp_metadata;
-use std::env;
 use std::path::PathBuf;
 
 fn main() {
@@ -39,20 +37,20 @@ fn main() {
     // println!("{}", image.name);
     // println!("{}", image.extension);
 
-    // let debug_metadata: BMPMetadata = parse_bmp_metadata::parse_bmp_metadata(&image.image);
+    let debug_metadata: BMPMetadata = parse_bmp_metadata::parse_bmp_metadata(&image.image);
     // println!("{:?}", debug.bits_per_pixel);
 
     // let row_stride = ((debug.bits_per_pixel * u16::try_from(debug.width).unwrap() + 31) / 32) * 4;
     // println!("{:?}", row_stride);
 
-    // let debug_pixeldata: BMPImage = parse_bmp_pixel_data(&image.image, debug_metadata);
+    let debug_pixeldata: BMPImage = parse_bmp_pixel_data(&image.image, debug_metadata);
 
-    // println!("{:?}", &debug_pixeldata.pixels[..12]);
+    println!("{:?}", &debug_pixeldata.pixels[..12]);
 
     let image_metadata = parse_bmp_metadata(&image.image);
     let image_pixel_data = parse_bmp_pixel_data(&image.image, image_metadata);
     let image_brightness_data = calculate_brightness(image_pixel_data);
-    let image_downscaled_brightness_data = ascii_downscaler(image_brightness_data, 175, 100);
+    let image_downscaled_brightness_data = ascii_downscaler(image_brightness_data, 75, 30);
     let image_ascii_map = brightness_to_ascii_mapper(image_downscaled_brightness_data);
     let image_ascii = render_ascii_image(image_ascii_map);
 
