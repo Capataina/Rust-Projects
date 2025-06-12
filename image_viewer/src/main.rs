@@ -50,7 +50,7 @@ fn main() {
     let image_metadata = parse_bmp_metadata(&image.image);
     let image_pixel_data = parse_bmp_pixel_data(&image.image, image_metadata);
     let image_brightness_data = calculate_brightness(image_pixel_data);
-    let image_downscaled_brightness_data = ascii_downscaler(image_brightness_data, 75, 30);
+    let image_downscaled_brightness_data = ascii_downscaler(image_brightness_data, 100, 30);
     let image_ascii_map = brightness_to_ascii_mapper(image_downscaled_brightness_data);
     let image_ascii = render_ascii_image(image_ascii_map);
 
